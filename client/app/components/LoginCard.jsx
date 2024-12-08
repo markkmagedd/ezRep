@@ -135,7 +135,7 @@ const LoginCard = () => {
                   {toast}
                 </button>
               ) : (
-                <button className="btn btn-primary ">Login</button>
+                <button className="btn btn-primary text-white">Login</button>
               )}
             </div>
           </form>
