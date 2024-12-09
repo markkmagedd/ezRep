@@ -2,7 +2,7 @@ import { User } from "lucide-react";
 const Navbar = () => {
   return (
     <>
-      <div className="navbar bg-base-100 flex justify-center h-24">
+      <div className="navbar bg-base-100 flex sticky justify-center h-24">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -44,34 +44,9 @@ const Navbar = () => {
               </li>
             </ul>
           </div>
-          <a className="btn btn-ghost text-4xl">ezRep</a>
         </div>
-
-        <div className="navbar-end">
-          <div className="dropdown dropdown-end">
-            <div
-              tabIndex={0}
-              role="button"
-              className="btn btn-ghost btn-square  avatar"
-            >
-              <User className="w-10 rounded-full" />
-            </div>
-            <ul
-              tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
-            >
-              <li>
-                <a className="justify-between">Profile</a>
-              </li>
-              <li>
-                <a>Settings</a>
-              </li>
-              <li>
-                <a>Logout</a>
-              </li>
-            </ul>
-          </div>
-        </div>
+        <a className="btn btn-ghost text-4xl">ezRep</a>
+        <div className="navbar-end"></div>
       </div>
     </>
   );

@@ -11,15 +11,8 @@ export default function DashboardPage() {
   return (
     <main className="flex-col justify-items-center bg-transparent ">
       <h1 className="text-5xl font-bold mb-20 mt-20">
-        Welcome Back {username}
+        Welcome Back {username} 👋
       </h1>
-      <div className="flex bg-transparent gap-20">
-        <LastWorkoutCard />
-        <MyRoutinesCard />
-      </div>
-      <div>
-        <MyProgressCard />
-      </div>
     </main>
   );
 }

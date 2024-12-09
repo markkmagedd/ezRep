@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { House, Calendar, ChartSpline } from "lucide-react";
+import { House, Calendar, ChartSpline, User, Settings } from "lucide-react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 
@@ -24,6 +24,16 @@ const BottomNav = () => {
           <li>
             <Link href={`/dashboard/${username}/progress`}>
               <ChartSpline />
+            </Link>
+          </li>
+          <li>
+            <Link href={``}>
+              <Settings />
+            </Link>
+          </li>
+          <li>
+            <Link href={``}>
+              <User />
             </Link>
           </li>
         </ul>
