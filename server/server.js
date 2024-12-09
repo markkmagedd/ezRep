@@ -4,14 +4,16 @@ import cors from "cors";
 import registrationRoute from "./routes/registration.route.js";
 import loginRoute from "./routes/login.route.js";
 import dotenv from "dotenv";
+import session from "express-session";
 dotenv.config();
-
 const app = express();
+
 app.use(cors());
 app.use(express.json());
 app.use(
   cors({
-    origin: "http://localhost:3000", // React frontend URL
+    origin: "http://localhost:3000",
+    credentials: true,
   })
 );
 

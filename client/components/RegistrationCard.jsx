@@ -75,13 +75,13 @@ const RegistrationCard = () => {
     }
   };
   const handleLogin = () => {
-    router.push("/login");
+    router.push("/auth/login");
   };
   return (
-    <div className="bg-base-200 flex items-center justify-center min-h-screen">
-      <div className="card w-96 bg-base-100 shadow-xl">
+    <div>
+      <div className="card w-96 bg-base-100 shadow-2xl">
         <div className="card-body">
-          <h2 className="card-title text-4xl font-bold mb-6 justify-center">
+          <h2 className="card-title text-4xl font-bold mb-6 justify-center font-extrabold">
             Registration
           </h2>
           <form onSubmit={handleSubmit}>

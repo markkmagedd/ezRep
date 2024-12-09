@@ -59,13 +59,13 @@ const LoginCard = () => {
     }
   };
   const handleSignUp = () => {
-    router.push("/registration");
+    router.push("/auth/registration");
   };
   return (
-    <div className="bg-base-200 flex items-center justify-center min-h-screen">
-      <div className="card w-96 bg-base-100 shadow-xl">
+    <div>
+      <div className="card w-96 bg-base-100 shadow-2xl ">
         <div className="card-body">
-          <h2 className="card-title text-4xl font-bold mb-6 justify-center">
+          <h2 className="card-title text-4xl text-white mb-6 justify-center font-extrabold">
             Login
           </h2>
           <form onSubmit={handleSubmit}>
