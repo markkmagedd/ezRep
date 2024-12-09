@@ -4,7 +4,7 @@ import React from "react";
 
 const dashboardLayout = ({ children }) => {
   return (
-    <main>
+    <main className="bg-gradient-to-t from-base-100  to-primary min-h-screen">
       <div>
         <Navbar />
         <BottomNav />
