@@ -50,6 +50,7 @@ const LoginCard = () => {
       } else {
         setToast(data.error);
         setToastType("success");
+        router.push(`/dashboard/${username}`);
       }
     } catch (error) {
       setToast("An error occurred while logging in.");
@@ -63,7 +64,7 @@ const LoginCard = () => {
   };
   return (
     <div>
-      <div className="card w-96 bg-base-100 shadow-2xl ">
+      <div className="card w-96 bg-base-200 shadow-xl ">
         <div className="card-body">
           <h2 className="card-title text-4xl text-white mb-6 justify-center font-extrabold">
             Login
