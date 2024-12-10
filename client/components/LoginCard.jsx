@@ -146,7 +146,7 @@ const LoginCard = () => {
                   {toast}
                 </button>
               ) : (
-                <button className="btn btn-primary text-white">Login</button>
+                <button className="btn btn-secondary text-white">Login</button>
               )}
             </div>
           </form>
@@ -155,7 +155,7 @@ const LoginCard = () => {
 
           <div className="text-center">
             <p>Don't have an account?</p>
-            <a className="link link-primary" onClick={handleSignUp}>
+            <a className="link link-secondary" onClick={handleSignUp}>
               Register Now
             </a>
           </div>

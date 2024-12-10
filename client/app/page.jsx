@@ -11,7 +11,7 @@ export default function Home() {
       <main className="bg-gradient-to-t from-primary via-primary to-base-100 min-h-screen flex flex-col">
         {/* Custom Hero Section */}
         <div className="flex flex-col justify-center items-center flex-1">
-          <h1 className="text-6xl font-extrabold text-white mb-5 whitespace-nowrap">
+          <h1 className="text-5xl font-extrabold text-white mb-5 whitespace-nowrap">
             Make Every{" "}
             <a className="bg-secondary text-transparent bg-clip-text text-7xl ">
               Rep
@@ -23,8 +23,11 @@ export default function Home() {
               Unlock your potential with a dedicated platform to track and
               enhance your workout journey. Every rep counts towards your goals.
             </p>
-            <Link href="/auth/login" className="btn btn-secondary text-white">
-              Get Started
+            <Link
+              href="/auth/login"
+              className="btn btn-secondary text-xl text-white h-10 w-32 hover:scale-105 border-transparent shadow-2xl"
+            >
+              Hop on
             </Link>
           </div>
         </div>

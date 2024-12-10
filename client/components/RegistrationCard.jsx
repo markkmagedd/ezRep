@@ -211,7 +211,9 @@ const RegistrationCard = () => {
                   {toastMessage}
                 </button>
               ) : (
-                <button className="btn btn-primary text-white">Register</button>
+                <button className="btn btn-secondary text-white">
+                  Register
+                </button>
               )}
             </div>
           </form>
@@ -220,7 +222,7 @@ const RegistrationCard = () => {
 
           <div className="text-center">
             <p>Already have an account?</p>
-            <a className="link link-primary" onClick={handleLogin}>
+            <a className="link link-secondary" onClick={handleLogin}>
               Login Now
             </a>
           </div>
