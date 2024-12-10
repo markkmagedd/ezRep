@@ -2,7 +2,7 @@ import { User } from "lucide-react";
 const Navbar = () => {
   return (
     <>
-      <div className="navbar bg-base-100 flex sticky justify-center h-24">
+      <div className="navbar bg-base-100 flex sticky shadow-2xl justify-center h-24">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -45,7 +45,7 @@ const Navbar = () => {
             </ul>
           </div>
         </div>
-        <a className="btn btn-ghost text-4xl">ezRep</a>
+        <a className="btn btn-ghost text-5xl">ezRep</a>
         <div className="navbar-end"></div>
       </div>
     </>

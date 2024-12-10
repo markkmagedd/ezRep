@@ -1,9 +1,9 @@
 "use client";
 import { useParams } from "next/navigation";
 import React from "react";
-import LastWorkoutCard from "@/components/LastWorkoutCard";
-import MyProgressCard from "@/components/MyProgressCard";
-import MyRoutinesCard from "@/components/MyRoutineCard";
+import LastWorkoutCard from "@/components/CheckInCard";
+import MyProgressCard from "@/components/ProgressCard";
+import MyRoutinesCard from "@/components/GoalsCard";
 
 export default function DashboardPage() {
   const { username } = useParams();

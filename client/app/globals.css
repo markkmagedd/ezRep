@@ -1,12 +1,31 @@
+/* globals.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Custom font imports */
+@font-face {
+  font-family: "Oswald";
+  src: url("/fonts/Oswald-Regular.ttf") format("truetype");
+  font-weight: 400; /* Normal weight */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Oswald";
+  src: url("/fonts/Oswald-Bold.ttf") format("truetype");
+  font-weight: 700; /* Bold weight */
+  font-style: normal;
+}
+
+/* Global styles */
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --font-family: "Oswald", Arial, Helvetica, sans-serif;
 }
 
+/* Dark Mode */
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
@@ -17,5 +36,10 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-family); /* Apply Oswald font */
+}
+
+code,
+pre {
+  font-family: monospace;
 }
