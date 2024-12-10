@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <main className="bg-gradient-to-t from-primary to-base-100 min-h-screen flex flex-col">
+      <main className="bg-gradient-to-t from-primary via-primary to-base-100 min-h-screen flex flex-col">
         {/* Custom Hero Section */}
         <div className="flex flex-col justify-center items-center flex-1">
           <h1 className="text-6xl font-extrabold text-white mb-5 whitespace-nowrap">
