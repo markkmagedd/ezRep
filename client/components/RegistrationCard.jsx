@@ -66,6 +66,7 @@ const RegistrationCard = () => {
       } else {
         setToastType("success");
         setToastMessage("Successfully Registered");
+        router.push(`/dashboard/${username}`);
       }
     } catch (error) {
       setToastMessage("An error occurred during registration");

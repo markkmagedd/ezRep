@@ -5,9 +5,29 @@ import registrationRoute from "./routes/registration.route.js";
 import loginRoute from "./routes/login.route.js";
 import dotenv from "dotenv";
 import session from "express-session";
+import MongoStore from "connect-mongo";
 dotenv.config();
 const app = express();
+app.use(express.json());
 
+// Express Session configuration
+app.use(
+  session({
+    secret: "your-secret-key",
+    resave: false,
+    saveUninitialized: false,
+    store: MongoStore.create({
+      mongoUrl: "mongodb://localhost:27017/ezRep",
+      collectionName: "sessions",
+      ttl: 24 * 60 * 60, // Session expiry time (24 hours)
+    }),
+    cookie: {
+      httpOnly: true,
+      secure: false, // Use true if using https in production
+      maxAge: 1000 * 60 * 60 * 24, // Cookie expiration (1 day)
+    },
+  })
+);
 app.use(cors());
 app.use(express.json());
 app.use(
