@@ -64,7 +64,7 @@ const LoginCard = () => {
   };
   return (
     <div>
-      <div className="card w-96 bg-base-200 shadow-xl ">
+      <div className="card w-96 bg-base-100 shadow-xl ">
         <div className="card-body">
           <h2 className="card-title text-4xl text-white mb-6 justify-center font-extrabold">
             Login

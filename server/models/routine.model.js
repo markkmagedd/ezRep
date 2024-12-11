@@ -1,7 +1,5 @@
-// models/Routine.js
 import mongoose from "mongoose";
 
-// Routine schema for user-specific workout routines
 const routineSchema = new mongoose.Schema(
   {
     userId: {
@@ -10,20 +8,20 @@ const routineSchema = new mongoose.Schema(
       required: true,
     },
     name: {
-      type: String, // E.g., "Push-Pull-Legs", "Bro Split", or a custom name
+      type: String,
       required: true,
     },
     type: {
-      type: String, // Type of routine: "Push-Pull-Legs", "Bro Split", "Custom"
+      type: String,
       required: true,
     },
     description: {
-      type: String, // Optional description of the routine
+      type: String,
     },
     days: [
       {
         dayName: {
-          type: String, // E.g., "Push", "Pull", "Legs", etc.
+          type: String,
           required: true,
         },
         exercises: [
@@ -42,15 +40,16 @@ const routineSchema = new mongoose.Schema(
               required: true,
             },
             rest: {
-              type: Number, // Optional: rest time between sets in seconds
+              type: Number,
             },
             notes: {
-              type: String, // Optional: custom notes for the user
+              type: String,
             },
           },
         ],
       },
     ],
+    current: { type: Boolean, default: false },
   },
   { timestamps: true }
 );

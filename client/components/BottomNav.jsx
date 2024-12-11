@@ -17,17 +17,17 @@ const BottomNav = () => {
             </Link>
           </li>
           <li>
-            <Link href={`/dashboard/${username}/myroutines`}>
+            <Link href={`/${username}/myroutines`}>
               <Calendar />
             </Link>
           </li>
           <li>
-            <Link href={`/dashboard/${username}/progress`}>
+            <Link href={`/${username}/progress`}>
               <ChartSpline />
             </Link>
           </li>
           <li>
-            <Link href={``}>
+            <Link href={`/${username}/progress`}>
               <Settings />
             </Link>
           </li>

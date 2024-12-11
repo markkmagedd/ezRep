@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import cors from "cors";
 import registrationRoute from "./routes/registration.route.js";
 import loginRoute from "./routes/login.route.js";
+import routineRoute from "./routes/routine.route.js";
 import dotenv from "dotenv";
 import session from "express-session";
 import MongoStore from "connect-mongo";
@@ -10,7 +11,6 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 
-// Express Session configuration
 app.use(
   session({
     secret: "your-secret-key",
@@ -39,6 +39,8 @@ app.use(
 
 app.use("/registration", registrationRoute);
 app.use("/login", loginRoute);
+app.use("/get-routines", routineRoute);
+app.use("/add-routine", routineRoute);
 
 mongoose
   .connect(process.env.MONGODB_URI, {})
