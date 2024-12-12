@@ -1,3 +1,5 @@
+import Routine from "../models/routine.model";
+
 export const getRoutines = async (req, res) => {
   try {
     const userId = req.session.user.userId;
@@ -24,6 +26,7 @@ export const getRoutines = async (req, res) => {
   }
 };
 export const addRoutine = async (req, res) => {
-    const userId = req.session.user.id;
-    const {}
+  const userId = req.session.user.id;
+    const Routine = req.body;
+    
 };
