@@ -12,7 +12,7 @@ const BottomNav = () => {
       <div className="">
         <ul className="menu menu-horizontal bg-primary rounded-box w-68 h-20 mb-8 items-center flex justify-center">
           <li>
-            <Link href={`/dashboard/${username}`}>
+            <Link href={`/${username}`}>
               <House />
             </Link>
           </li>

@@ -66,7 +66,7 @@ const RegistrationCard = () => {
       } else {
         setToastType("success");
         setToastMessage("Successfully Registered");
-        router.push(`/dashboard/${username}`);
+        router.push(`/${username}`);
       }
     } catch (error) {
       setToastMessage("An error occurred during registration");
@@ -82,7 +82,7 @@ const RegistrationCard = () => {
     <div>
       <div className="card w-96 bg-base-100 shadow-2xl">
         <div className="card-body">
-          <h2 className="card-title text-4xl font-bold mb-6 justify-center font-extrabold">
+          <h2 className="card-title text-4xl mb-6 justify-center font-extrabold">
             Registration
           </h2>
           <form onSubmit={handleSubmit}>

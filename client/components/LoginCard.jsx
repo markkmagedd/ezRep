@@ -50,7 +50,7 @@ const LoginCard = () => {
       } else {
         setToast(data.error);
         setToastType("success");
-        router.push(`/dashboard/${username}`);
+        router.push(`/${username}`);
       }
     } catch (error) {
       setToast("An error occurred while logging in.");

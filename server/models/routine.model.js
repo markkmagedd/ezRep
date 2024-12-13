@@ -14,37 +14,53 @@ const routineSchema = new mongoose.Schema(
     description: {
       type: String,
     },
-    days: [
-      {
-        dayName: {
-          type: String,
-          required: true,
-        },
-        exercises: [
-          {
-            exerciseId: {
-              type: mongoose.Schema.Types.ObjectId,
-              ref: "Exercise",
-              required: true,
-            },
-            sets: {
-              type: Number,
-              required: true,
-            },
-            reps: {
-              type: Number,
-              required: true,
-            },
-            rest: {
-              type: Number,
-            },
-            notes: {
-              type: String,
-            },
+    days: {
+      type: [
+        {
+          dayName: {
+            type: String,
+            required: true,
           },
-        ],
-      },
-    ],
+          exercises: [
+            {
+              name: {
+                type: String,
+                required: true,
+              },
+              muscle: {
+                type: String,
+                required: true,
+              },
+              description: {
+                type: String,
+              },
+              sets: [
+                {
+                  number: {
+                    type: Number,
+                    required: true,
+                  },
+                  reps: {
+                    type: Number,
+                    required: true,
+                  },
+                  rest: {
+                    type: Number,
+                  },
+                  weight: {
+                    type: Number,
+                    required: false,
+                  },
+                  notes: {
+                    type: String,
+                  },
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
     current: { type: Boolean, default: false },
   },
   { timestamps: true }

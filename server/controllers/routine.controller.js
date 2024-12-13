@@ -1,4 +1,4 @@
-import Routine from "../models/routine.model";
+import Routine from "../models/routine.model.js";
 
 export const getRoutines = async (req, res) => {
   try {
@@ -26,7 +26,20 @@ export const getRoutines = async (req, res) => {
   }
 };
 export const addRoutine = async (req, res) => {
-  const userId = req.session.user.id;
-    const Routine = req.body;
-    
+  const routine = req.body;
+  const newRoutine = new Routine(routine);
+  try {
+    await newRoutine.save();
+    res.status(200).json({
+      error: null,
+      success: true,
+      data: routine,
+    }); 
+  } catch (error) {
+    res.status(400).json({
+      error: error,
+      success: false,
+      data: null,
+    });
+  }
 };
