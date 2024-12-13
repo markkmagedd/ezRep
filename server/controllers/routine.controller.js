@@ -4,7 +4,7 @@ export const getRoutines = async (req, res) => {
   try {
     const userId = req.session.user.userId;
     const userRoutines = await Routine.find({ userId });
-    if (!userRoutines) {
+    if (userRoutines.length == 0) {
       res.status(401).json({
         error: "No Routines Found For This User",
         success: false,
@@ -28,13 +28,14 @@ export const getRoutines = async (req, res) => {
 export const addRoutine = async (req, res) => {
   const routine = req.body;
   const newRoutine = new Routine(routine);
+  newRoutine.userId = req.session.user.userId;
   try {
     await newRoutine.save();
     res.status(200).json({
       error: null,
       success: true,
       data: routine,
-    }); 
+    });
   } catch (error) {
     res.status(400).json({
       error: error,

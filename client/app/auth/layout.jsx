@@ -5,7 +5,7 @@ const AuthLayout = ({ children }) => {
   return (
     <>
       <Navbar />
-      <main className="bg-gradient-to-t from-base-100 via-primary to-base-200 min-h-screen flex items-center justify-center">
+      <main className="min-h-screen flex items-center justify-center">
         <div>{children}</div>
       </main>
     </>

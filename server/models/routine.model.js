@@ -44,6 +44,10 @@ const routineSchema = new mongoose.Schema(
                     type: Number,
                     required: true,
                   },
+                  weightUnit: {
+                    type: String,
+                    required: true,
+                  },
                   rest: {
                     type: Number,
                   },
