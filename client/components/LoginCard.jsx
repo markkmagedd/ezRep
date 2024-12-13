@@ -154,7 +154,7 @@ const LoginCard = () => {
           <div className="divider">OR</div>
 
           <div className="text-center">
-            <p>Don't have an account?</p>
+            <p>Dont have an account?</p>
             <a className="link link-secondary" onClick={handleSignUp}>
               Register Now
             </a>

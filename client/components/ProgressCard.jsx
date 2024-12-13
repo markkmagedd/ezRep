@@ -10,8 +10,8 @@ const ProgressCard = () => {
         <h2 className="card-title justify-center">Track Your Progress</h2>
         <div className="divider mt-0.5 divider-white"></div>
         <p className="mt-0.5">
-          Easily log your workouts, monitor your sets, reps, and weights, and
-          see how far you've come over time.
+          Easily log your workouts&lsquo; monitor your sets&lsquo; reps&lsquo; and weights&lsquo; and
+          see how far youve come over time.
         </p>
       </div>
     </div>
