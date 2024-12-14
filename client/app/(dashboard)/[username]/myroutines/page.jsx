@@ -1,63 +1,33 @@
 "use client";
 import React from "react";
 import RoutineCard from "@/components/MyRoutineCard"; // Import the new RoutineCard component
-
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 const RoutinePage = () => {
-  const routines = [
-    {
-      _id: "1",
-      name: "Full Body Workout",
-      description: "A complete workout for full body strength and endurance.",
-      days: [
-        {
-          dayName: "Day 1: Upper Body",
-          exercises: [
-            {
-              name: "Push-up",
-              description:
-                "A classic bodyweight exercise for the chest, shoulders, and triceps.",
-              sets: [
-                { reps: 12, weight: "Bodyweight", weightUnit: "", rest: 60 },
-                { reps: 10, weight: "Bodyweight", weightUnit: "", rest: 60 },
-              ],
-            },
-            {
-              name: "Pull-up",
-              description: "An exercise for the back and biceps.",
-              sets: [
-                { reps: 8, weight: "Bodyweight", weightUnit: "", rest: 90 },
-                { reps: 6, weight: "Bodyweight", weightUnit: "", rest: 90 },
-              ],
-            },
-          ],
+  const [message, setMessage] = useState("");
+  const [routines, setRoutines] = useState([]);
+  const router = useRouter();
+  const getRoutines = async (e) => {
+    console.log("went into function");
+    try {
+      const res = await fetch("http://localhost:8080/get-routines", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
         },
-        {
-          dayName: "Day 2: Lower Body",
-          exercises: [
-            {
-              name: "Squat",
-              description:
-                "A fundamental lower body exercise targeting the quadriceps, hamstrings, and glutes.",
-              sets: [
-                { reps: 10, weight: "60", weightUnit: "kg", rest: 90 },
-                { reps: 8, weight: "60", weightUnit: "kg", rest: 90 },
-              ],
-            },
-            {
-              name: "Lunge",
-              description:
-                "A lower body exercise that works on the legs and glutes.",
-              sets: [
-                { reps: 12, weight: "40", weightUnit: "kg", rest: 90 },
-                { reps: 10, weight: "40", weightUnit: "kg", rest: 90 },
-              ],
-            },
-          ],
-        },
-      ],
-    },
-    // Other routines...
-  ];
+        credentials: "include",
+      });
+      const data = await res.json();
+      
+      setMessage(data.error);
+      if (data.success === true) {
+        setRoutines(data.data);
+      }
+    } catch (error) {}
+  };
+  useEffect(() => {
+    getRoutines(); // Fetch the routines when the component is mounted
+  }, []);
 
   return (
     <main className="p-8">

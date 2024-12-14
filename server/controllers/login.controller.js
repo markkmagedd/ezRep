@@ -12,7 +12,11 @@ export const login = async (req, res) => {
       });
       return;
     }
-    req.session.user = { username: foundUser.username, userId: foundUser._id };
+    req.session.user = {
+      username: foundUser.username,
+      userId: foundUser._id.toString(),
+    };
+    console.log(req.session.user);
     res.status(200).json({
       error: "Logged In Successfully",
       success: true,
