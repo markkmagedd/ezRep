@@ -46,8 +46,7 @@ app.use(
 // Routes
 app.use("/registration", registrationRoute);
 app.use("/login", loginRoute);
-app.use("/get-routines", routineRoute);
-app.use("/add-routine", routineRoute);
+app.use("/my-routines", routineRoute);
 
 // MongoDB connection
 mongoose

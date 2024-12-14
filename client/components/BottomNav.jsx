@@ -10,7 +10,7 @@ const BottomNav = () => {
   return (
     <div className="btm-nav bg-transparent flex ">
       <div>
-        <ul className="menu menu-horizontal bg-primary rounded-box w-68 h-20 mb-8 items-center flex justify-center">
+        <ul className="menu text-white menu-horizontal bg-secondary rounded-box w-68 h-20 mb-8 items-center flex justify-center">
           <li>
             <Link href={`/${username}`}>
               <House />

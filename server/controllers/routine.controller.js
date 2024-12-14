@@ -11,10 +11,9 @@ export const getRoutines = async (req, res) => {
     }
 
     const userId = req.session.user.userId;
-    console.log(req.session.user.userId);
-    console.log(userId);
+
     const userRoutines = await Routine.find({ userId });
-    console.log(userRoutines);
+
     if (userRoutines.length == 0) {
       res.status(401).json({
         error: "No Routines Found For This User",
@@ -50,6 +49,46 @@ export const addRoutine = async (req, res) => {
     });
   } catch (error) {
     res.status(400).json({
+      error: error,
+      success: false,
+      data: null,
+    });
+  }
+};
+
+export const setCurrentRoutine = async (req, res) => {
+  const { routineId } = req.body;
+  const userId = req.session.user.userId;
+  console.log("routine id:", routineId);
+  console.log("user id :", userId);
+  try {
+    const routine = await Routine.findById(routineId);
+    console.log(routine);
+    if (routine.current === false) {
+      try {
+        try {
+          await Routine.updateMany({ userId }, { current: false });
+          res.status(200).json({ error: null, success: true, data: null });
+        } catch (error) {
+          console.log(error);
+          res.status(400).json({ error: error, success: false, data: null });
+        }
+        await Routine.findByIdAndUpdate(routineId, {
+          current: true,
+        });
+      } catch (error) {
+        console.log(error);
+        res.status(500).json({ error: error, success: false, data: null });
+      }
+    } else {
+      res.status(400).json({
+        error: "This Is Already Your Current Routine",
+        success: false,
+        data: null,
+      });
+    }
+  } catch (error) {
+    res.status(500).json({
       error: error,
       success: false,
       data: null,

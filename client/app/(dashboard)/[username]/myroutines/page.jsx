@@ -1,32 +1,35 @@
 "use client";
-import React from "react";
-import RoutineCard from "@/components/MyRoutineCard"; // Import the new RoutineCard component
+import React, { useState, useEffect } from "react";
+import MyRoutineCard from "@/components/MyRoutineCard"; // Corrected import
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+
 const RoutinePage = () => {
-  const [message, setMessage] = useState("");
   const [routines, setRoutines] = useState([]);
   const router = useRouter();
-  const getRoutines = async (e) => {
-    console.log("went into function");
+
+  const getRoutines = async () => {
     try {
-      const res = await fetch("http://localhost:8080/get-routines", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-      });
+      const res = await fetch(
+        "http://localhost:8080/my-routines/get-routines",
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+        }
+      );
       const data = await res.json();
-      
-      setMessage(data.error);
-      if (data.success === true) {
-        setRoutines(data.data);
+      if (data.success) {
+        setRoutines(data.data); // Set the routines
       }
-    } catch (error) {}
+    } catch (error) {
+      console.error(error);
+    }
   };
+
   useEffect(() => {
-    getRoutines(); // Fetch the routines when the component is mounted
+    getRoutines(); // Fetch routines on page load
   }, []);
 
   return (
@@ -43,7 +46,7 @@ const RoutinePage = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {routines.map((routine) => (
-          <RoutineCard key={routine._id} routine={routine} />
+          <MyRoutineCard key={routine._id} routine={routine} />
         ))}
       </div>
     </main>
