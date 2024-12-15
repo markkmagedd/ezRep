@@ -1,6 +1,18 @@
-import React from "react";
-
+import React, { useState, useEffect } from "react";
+import Link from "next/link";
 const EditCard = ({ routine }) => {
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState(false);
+  const [description, setDescription] = useState(" ");
+  const [name, setName] = useState("");
+
+  useEffect(() => {
+    if (routine) {
+      setName(routine.name || "");
+      setDescription(routine.description || ""); // Set description when routine is available
+    }
+  }, [routine]);
+
   const updateRoutine = async () => {
     try {
       const res = await fetch(`http://localhost:8080/my-routines/${id}`, {
@@ -9,7 +21,7 @@ const EditCard = ({ routine }) => {
           "Content-Type": "application/json",
         },
         credentials: "include",
-        body: JSON.stringify({ name, description }),
+        body: JSON.stringify({ name, description, days }),
       });
 
       const data = await res.json();
@@ -31,7 +43,7 @@ const EditCard = ({ routine }) => {
       {success && <p className="text-green-500 mb-4">{success}</p>}
       {error && <p className="text-red-500 mb-4">{error}</p>}
 
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+      <form onSubmit={updateRoutine} className="flex flex-col gap-4">
         <div>
           <label className="block text-white mb-2">Routine Name</label>
           <input

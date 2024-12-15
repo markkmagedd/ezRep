@@ -6,7 +6,7 @@ const Navbar = () => {
         <div className="navbar-start"></div>
         <span className=" text-5xl py-1 px-3 rounded-lg h-18 hover:bg-base-200 navbar-center cursor-pointer">
           ezRep
-          <Dumbbell />
+          <Dumbbell className="text-white fill-secondary" />
         </span>
         <div className="navbar-end"></div>
       </div>
