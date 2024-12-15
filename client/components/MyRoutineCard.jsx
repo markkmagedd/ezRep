@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Edit2, Star } from "lucide-react"; // Importing necessary icons
-
+import Link from "next/link";
+import { useParams } from "next/navigation";
 const RoutineCard = ({ routine }) => {
+  const { username } = useParams();
   const [isCurrent, setIsCurrent] = useState(routine.current);
 
   const handleEditClick = (e) => {
@@ -45,13 +47,13 @@ const RoutineCard = ({ routine }) => {
           {routine.name}
         </span>
         <div className="flex flex-col gap-2 text-center">
-          <button
+          <Link
             className="bg-secondary text-white font-semibold py-1 px-3 rounded-lg hover:scale-125 transition-transform"
-            onClick={handleEditClick}
+            href={`./myroutines/${routine._id}`}
             aria-label="Edit Routine"
           >
             <Edit2 className="w-4 h-4" />
-          </button>
+          </Link>
           {isCurrent === false && (
             <button
               className="bg-secondary text-white font-semibold py-1 px-3 rounded-lg hover:scale-125 transition-transform"

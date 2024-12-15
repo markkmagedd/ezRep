@@ -11,7 +11,6 @@ export const getRoutines = async (req, res) => {
     }
 
     const userId = req.session.user.userId;
-
     const userRoutines = await Routine.find({ userId });
 
     if (userRoutines.length == 0) {
@@ -94,4 +93,40 @@ export const setCurrentRoutine = async (req, res) => {
       data: null,
     });
   }
+};
+
+export const getCertainRoutine = async (req, res) => {
+  try {
+    const { routineId } = req.params;
+    const routine = await Routine.find({ routineId });
+
+    if (!routine) {
+      res.status(401).json({
+        error: "No Routines Found For This User",
+        success: false,
+        data: null,
+      });
+      return;
+    }
+    res.status(200).json({
+      error: null,
+      success: true,
+      data: routine,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(400).json({
+      error: error,
+      success: false,
+      data: null,
+    });
+  }
+};
+
+export const updateRoutine = async () => {
+  try {
+    const { routineId } = req.params;
+    const { name, description, days } = req.body;
+    const updatedRoutine = await Routine.findByIdAndUpdate({ routineId } , );
+  } catch (error) {}
 };

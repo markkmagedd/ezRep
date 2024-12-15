@@ -23,9 +23,7 @@ const RoutinePage = () => {
       if (data.success) {
         setRoutines(data.data); // Set the routines
       }
-    } catch (error) {
-      console.error(error);
-    }
+    } catch (error) {}
   };
 
   useEffect(() => {
