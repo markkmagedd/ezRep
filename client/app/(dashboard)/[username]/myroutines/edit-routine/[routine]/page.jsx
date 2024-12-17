@@ -11,12 +11,11 @@ const EditRoutinePage = () => {
   const router = useRouter();
   const id = useParams().routine;
   const [routine, setRoutine] = useState({});
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const fetchRoutine = async () => {
+    setLoading(true);
     try {
       const res = await fetch(`http://localhost:8080/my-routines/${id}`, {
         method: "GET",
