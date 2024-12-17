@@ -1,8 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
-import registrationRoute from "./routes/registration.route.js";
-import loginRoute from "./routes/login.route.js";
+import authRoute from "./routes/auth.route.js";
 import routineRoute from "./routes/routine.route.js";
 import dotenv from "dotenv";
 import session from "express-session";
@@ -44,8 +43,8 @@ app.use(
 );
 
 // Routes
-app.use("/registration", registrationRoute);
-app.use("/login", loginRoute);
+
+app.use("/auth", authRoute);
 app.use("/my-routines", routineRoute);
 
 // MongoDB connection

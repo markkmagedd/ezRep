@@ -49,7 +49,7 @@ const RoutineCard = ({ routine }) => {
         <div className="flex flex-col gap-2 text-center">
           <Link
             className="bg-secondary text-white font-semibold py-1 px-3 rounded-lg hover:scale-125 transition-transform"
-            href={`./myroutines/${routine._id}`}
+            href={`./myroutines/edit-routine/${routine._id}`}
             aria-label="Edit Routine"
           >
             <Edit2 className="w-4 h-4" />
