@@ -30,7 +30,27 @@ const RoutinePage = () => {
   useEffect(() => {
     getRoutines(); // Fetch routines on page load
   }, []);
-
+  const setCurrentRoutine = async (routineId) => {
+    try {
+      const res = await fetch(
+        "http://localhost:8080/my-routines/set-current-routine",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+          body: JSON.stringify({ routineId: routine._id }),
+        }
+      );
+      const data = await res.json();
+      if (data.success === true) {
+        setIsCurrent(true);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <main className="p-8">
       <div className="flex items-center justify-between mb-6">
@@ -45,7 +65,12 @@ const RoutinePage = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {routines.map((routine) => (
-          <MyRoutineCard key={routine._id} routine={routine} />
+          <MyRoutineCard
+            key={routine._id}
+            routine={routine}
+            current={routine.current}
+            setCurrent={setCurrentRoutine}
+          />
         ))}
       </div>
     </main>

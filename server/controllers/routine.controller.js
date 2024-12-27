@@ -58,11 +58,8 @@ export const addRoutine = async (req, res) => {
 export const setCurrentRoutine = async (req, res) => {
   const { routineId } = req.body;
   const userId = req.session.user.userId;
-  console.log("routine id:", routineId);
-  console.log("user id :", userId);
   try {
     const routine = await Routine.findById(routineId);
-    console.log(routine);
     if (routine.current === false) {
       try {
         try {
@@ -76,7 +73,6 @@ export const setCurrentRoutine = async (req, res) => {
           current: true,
         });
       } catch (error) {
-        console.log(error);
         res.status(500).json({ error: error, success: false, data: null });
       }
     } else {
@@ -109,7 +105,6 @@ export const getCertainRoutine = async (req, res) => {
       });
       return;
     }
-    console.log(routine);
     res.status(200).json({
       error: null,
       success: true,
@@ -129,13 +124,11 @@ export const updateRoutine = async (req, res) => {
   try {
     const { _id } = req.params;
     const { name, description, days } = req.body;
-    console.log(_id);
     const updatedRoutine = await Routine.findByIdAndUpdate(
-      id,
+      _id,
       { name, description, days },
       { new: true }
     );
-    console.log(updatedRoutine);
   } catch (error) {
     console.log(error);
     res.status(400).json({ error: error.message });

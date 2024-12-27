@@ -42,29 +42,7 @@ const EditCard = ({ routine }) => {
   };
 
   return (
-    <main className="grid grid-cols-2 ">
-      <div className="p-8 bg-primary rounded-xl shadow-lg mt-5 ">
-        <label className="block text-white text-3xl mb-2 font-semibold">
-          Routine Name
-        </label>
-        <input
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          className=" p-2 mb-3 text-xl rounded-lg bg-secondary text-white"
-          required
-        />
-        <label className="block text-white text-3xl mb-3 font-semibold">
-          Description
-        </label>
-        <textarea
-          type="text"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          className="w-full p-2 rounded-lg bg-secondary text-white"
-          required
-        />
-      </div>
+    <main className="grid grid-cols-1 ">
       <div className="m-10 p-10 bg-primary rounded-xl shadow-lg mt-5">
         <form onSubmit={updateRoutine} className="flex flex-col gap-4">
           <h1 className="text-3xl font-bold text-white mb-6">Edit Routine</h1>

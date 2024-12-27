@@ -2,35 +2,16 @@ import React, { useEffect, useState } from "react";
 import { Edit2, Star } from "lucide-react"; // Importing necessary icons
 import Link from "next/link";
 import { useParams } from "next/navigation";
-const RoutineCard = ({ routine }) => {
+const RoutineCard = ({ routine }, isCurrent, setCurrent) => {
   const { username } = useParams();
-  const [isCurrent, setIsCurrent] = useState(routine.current);
-
-  const handleEditClick = (e) => {
-    e.stopPropagation();
-    console.log("Edit routine:", routine.name);
-  };
+  const [loading, setLoading] = useState(false);
 
   // Function to handle the star button click
   const handleStarClick = async (e) => {
     e.stopPropagation();
+
     try {
-      const res = await fetch(
-        "http://localhost:8080/my-routines/set-current-routine",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          credentials: "include",
-          body: JSON.stringify({ routineId: routine._id }),
-        }
-      );
-      const data = await res.json();
-      if (data.success === true) {
-        setIsCurrent(true); // Update local state
-        // Notify parent to update its state
-      }
+      await setCurrent;
     } catch (error) {
       console.log(error);
     }
@@ -54,15 +35,17 @@ const RoutineCard = ({ routine }) => {
           >
             <Edit2 className="w-4 h-4" />
           </Link>
-          {isCurrent === false && (
-            <button
-              className="bg-secondary text-white font-semibold py-1 px-3 rounded-lg hover:scale-125 transition-transform"
-              onClick={handleStarClick}
-              aria-label="Set Current Routine"
-            >
-              <Star className="w-4 h-4" />
-            </button>
-          )}
+          <button
+            className={`bg-secondary text-white font-semibold py-1 px-3 rounded-lg transition-transform ${
+              loading ? "opacity-50" : "hover:scale-125"
+            }`}
+            onClick={handleStarClick}
+            aria-label={
+              isCurrent ? "Routine is current" : "Set as current routine"
+            }
+          >
+            <Star className={`w-4 h-4 ${isCurrent ? "text-yellow-400" : ""}`} />
+          </button>
         </div>
       </div>
 
