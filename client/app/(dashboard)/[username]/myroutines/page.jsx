@@ -6,9 +6,9 @@ import Link from "next/link";
 
 const RoutinePage = () => {
   const [routines, setRoutines] = useState([]);
-  const router = useRouter();
-
+  const [loading, setLoading] = useState(false);
   const getRoutines = async () => {
+    setLoading(true);
     try {
       const res = await fetch(
         "http://localhost:8080/my-routines/get-routines",
@@ -22,35 +22,27 @@ const RoutinePage = () => {
       );
       const data = await res.json();
       if (data.success) {
-        setRoutines(data.data); // Set the routines
+        const sortedRoutines = data.data.sort((a, b) => {
+          if (a.current && !b.current) return -1;
+          if (!a.current && b.current) return 1;
+          return 0;
+        });
+        setRoutines(sortedRoutines);
       }
-    } catch (error) {}
+    } catch (error) {
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleRerender = () => {
+    getRoutines();
   };
 
   useEffect(() => {
-    getRoutines(); // Fetch routines on page load
+    getRoutines();
   }, []);
-  const setCurrentRoutine = async (routineId) => {
-    try {
-      const res = await fetch(
-        "http://localhost:8080/my-routines/set-current-routine",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          credentials: "include",
-          body: JSON.stringify({ routineId: routine._id }),
-        }
-      );
-      const data = await res.json();
-      if (data.success === true) {
-        setIsCurrent(true);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
+
   return (
     <main className="p-8">
       <div className="flex items-center justify-between mb-6">
@@ -66,10 +58,9 @@ const RoutinePage = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {routines.map((routine) => (
           <MyRoutineCard
-            key={routine._id}
+            key={`${routine._id}-${Date.now()}`}
             routine={routine}
-            current={routine.current}
-            setCurrent={setCurrentRoutine}
+            check={handleRerender}
           />
         ))}
       </div>
