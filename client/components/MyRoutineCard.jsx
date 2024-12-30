@@ -40,8 +40,11 @@ const RoutineCard = ({ routine, check }) => {
     >
       {/* Header Section */}
       <div className="flex justify-between items-center mb-4">
-        <h1 className="text-2xl font-semibold text-white bg-secondary rounded-lg px-3 py-1">
+        <h1 className="text-2xl flex font-semibold text-white bg-secondary rounded-lg px-3 py-1 ">
           {routine.name}
+          {isCurrent && (
+            <Star className="text-yellow-400 fill-yellow-400 w-5 h-5" />
+          )}
         </h1>
 
         <div className="flex flex-col gap-2 text-center">
@@ -71,12 +74,6 @@ const RoutineCard = ({ routine, check }) => {
       <p className="text-white mb-4">
         {routine.description || "No description provided."}
       </p>
-      {isCurrent && (
-        <div className="badge badge-white">
-          Current Routine&nbsp;
-          <Star className="text-yellow-400 fill-yellow-400 w-3.5 h-3.5" />
-        </div>
-      )}
     </div>
   );
 };

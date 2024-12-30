@@ -1,6 +1,4 @@
-// app/myroutines/[id]/edit/page.jsx
-
-"use client"; // Enable client-side rendering
+"use client";
 
 import React, { useEffect, useState } from "react";
 import { useRouter, useParams } from "next/navigation";
@@ -11,6 +9,9 @@ const EditRoutinePage = () => {
   const router = useRouter();
   const id = useParams().routine;
   const [routine, setRoutine] = useState({});
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [days, setDays] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
@@ -39,21 +40,45 @@ const EditRoutinePage = () => {
       setLoading(false);
     }
   };
+  const handleNameChange = (e) => {
+    setName(e.target.value);
+  };
+  useEffect(() => {
+    if (routine) {
+      setName(routine.name || "");
+      setDescription(routine.description || "");
+      setDays(routine.days || []);
+    }
+  }, [routine]);
   useEffect(() => {
     fetchRoutine();
   }, []);
-  if (error) {
-    return (
-      <div className="flex flex-col justify-center items-center h-screen">
-        <p className="text-red-500 mb-4">{error}</p>
-        <Link href="/myroutines" className="text-secondary">
-          Go Back to Routines
-        </Link>
-      </div>
-    );
-  }
 
-  return <EditCard routine={routine} />;
+  return (
+    <>
+      <main className="bg-base-100 shadow-2xl p-16 m-16 rounded-xl grid grid-cols-2  ">
+        <div>
+          <h1 className="text-4xl text-white font-semibold mb-5">
+            Routine Name
+          </h1>
+          <input
+            type="text"
+            placeholder={`${name}`}
+            className="input input-bordered bg-primary text-white input-primary w-full max-w-xs"
+          />
+          <h1 className="text-4xl text-white font-semibold mb-4 mt-5">
+            Description
+          </h1>
+          <textarea
+            type="text"
+            placeholder={`${description}`}
+            className="input input-bordered bg-primary text-white input-primary w-full h-40 max-w-xs"
+          />
+        </div>
+        <div></div>
+      </main>
+    </>
+  );
 };
 
 export default EditRoutinePage;

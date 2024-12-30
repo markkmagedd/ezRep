@@ -46,7 +46,9 @@ const RoutinePage = () => {
   return (
     <main className="p-8">
       <div className="flex items-center justify-between mb-6">
-        <h1 className="text-3xl font-bold text-white">Your Workout Routines</h1>
+        <h1 className="text-3xl font-bold text-white">
+          Your Workout Routines :
+        </h1>
         <Link
           className="bg-secondary text-white font-extrabold py-2 px-4 rounded-lg hover:scale-110 transition"
           href="./add-routine"
