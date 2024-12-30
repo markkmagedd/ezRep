@@ -94,9 +94,7 @@ export const setCurrentRoutine = async (req, res) => {
 export const getCertainRoutine = async (req, res) => {
   try {
     const { _id } = req.params;
-    console.log(_id);
     const routine = await Routine.findOne({ _id });
-    console.log(routine);
     if (!routine) {
       res.status(401).json({
         error: "No Routines Found For This User",
@@ -124,7 +122,7 @@ export const updateRoutine = async (req, res) => {
   try {
     const { _id } = req.params;
     const { name, description, days } = req.body;
-    const updatedRoutine = await Routine.findByIdAndUpdate(
+    await Routine.findByIdAndUpdate(
       _id,
       { name, description, days },
       { new: true }
