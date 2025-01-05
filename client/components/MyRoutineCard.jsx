@@ -35,16 +35,13 @@ const RoutineCard = ({ routine, check }) => {
 
   return (
     <div
-      className="bg-primary p-6 rounded-xl shadow-lg hover:shadow-2xl transition-transform transform hover:scale-105 cursor-pointer relative"
+      className="bg-primary p-6 rounded-xl shadow-lg hover:shadow-2xl border-4 border-primary hover:border-secondary transition-transform transform hover:scale-105 cursor-pointer relative"
       onClick={() => {}}
     >
       {/* Header Section */}
       <div className="flex justify-between items-center mb-4">
         <h1 className="text-2xl flex font-semibold text-white bg-secondary rounded-lg px-3 py-1 ">
           {routine.name}
-          {isCurrent && (
-            <Star className="text-yellow-400 fill-yellow-400 w-5 h-5" />
-          )}
         </h1>
 
         <div className="flex flex-col gap-2 text-center">
@@ -74,6 +71,13 @@ const RoutineCard = ({ routine, check }) => {
       <p className="text-white mb-4">
         {routine.description || "No description provided."}
       </p>
+
+      {isCurrent && (
+        <div className="badge px-3 py-4 mt-4 font-bold">
+          Current Routine&nbsp;
+          <Star className="text-yellow-400  fill-yellow-400 w-4 h-4" />
+        </div>
+      )}
     </div>
   );
 };
