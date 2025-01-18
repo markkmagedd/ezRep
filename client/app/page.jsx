@@ -8,8 +8,8 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <main className="flex flex-col  min-h-screen">
-        <div className="flex flex-col justify-center items-center mt-32 gap-24">
+      <main className="flex flex-col min-h-screen">
+        <div className="flex flex-col justify-center items-center mt-20 gap-24">
           <div className="scale-75 md:scale-90 lg:scale-100">
             <h1 className="text-6xl font-extrabold text-white mb-5 whitespace-nowrap ">
               Make Every{" "}

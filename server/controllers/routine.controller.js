@@ -132,3 +132,38 @@ export const updateRoutine = async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 };
+
+export const getCurrentRoutine = async (req, res) => {
+  try {
+    if (!req.session.user) {
+      return res.status(401).json({
+        error: "Unauthorized: No session found",
+        success: false,
+        data: null,
+      });
+    }
+
+    const userId = req.session.user.userId;
+    const currentRoutine = await Routine.findOne({ userId, current: true });
+    if (currentRoutine) {
+      res.status(200).json({
+        error: null,
+        success: true,
+        data: currentRoutine,
+      });
+    } else {
+      res.status(400).json({
+        error: error,
+        success: false,
+        data: "error not found",
+      });
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(400).json({
+      error: error,
+      success: false,
+      data: null,
+    });
+  }
+};

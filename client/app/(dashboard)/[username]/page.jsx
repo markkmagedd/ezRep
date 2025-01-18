@@ -1,6 +1,5 @@
 "use client";
 import LastWorkoutCard from "@/components/LastWorkoutCard";
-
 import React, { useState } from "react";
 
 export default function DashboardPage() {

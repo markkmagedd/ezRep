@@ -39,7 +39,7 @@ const RoutineCard = ({ routine, check }) => {
       onClick={() => {}}
     >
       {/* Header Section */}
-      <div className="flex justify-between items-center mb-4">
+      <div className="flex justify-between items-center mb-5">
         <h1 className="text-2xl flex font-semibold text-white bg-secondary rounded-lg px-3 py-1 ">
           {routine.name}
         </h1>
@@ -68,12 +68,15 @@ const RoutineCard = ({ routine, check }) => {
         </div>
       </div>
 
-      <p className="text-white mb-4">
-        {routine.description || "No description provided."}
-      </p>
+      <div className="text-white font-bold mb-4 mt-4 ">
+        Routine Days :&nbsp;&nbsp;
+        <span className="text-2xl text-white bg-base-100 rounded-lg px-3 py-1">
+          {routine.days.length}
+        </span>
+      </div>
 
       {isCurrent && (
-        <div className="badge px-3 py-4 mt-4 font-bold">
+        <div className="badge px-3 py-4 mt-4 font-bold absolute bottom-2 right-2">
           Current Routine&nbsp;
           <Star className="text-yellow-400  fill-yellow-400 w-4 h-4" />
         </div>
