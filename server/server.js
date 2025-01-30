@@ -28,7 +28,8 @@ app.use(
     resave: false,
     saveUninitialized: false,
     store: MongoStore.create({
-      mongoUrl: "mongodb://localhost:27017/ezRep",
+      mongoUrl:
+        "mongodb+srv://markmagedamazon:Mozajobotros%4012@ezrep.7yhip.mongodb.net/ezRep",
       collectionName: "sessions",
       ttl: 24 * 60 * 60, // Session expiry time (24 hours)
     }),
