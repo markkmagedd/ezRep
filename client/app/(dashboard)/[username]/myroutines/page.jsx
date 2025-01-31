@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import MyRoutineCard from "@/components/MyRoutineCard"; // Corrected import
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import Loading from "@/components/Loading";
 
 const RoutinePage = () => {
   const [routines, setRoutines] = useState([]);
@@ -57,15 +58,21 @@ const RoutinePage = () => {
         </Link>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {routines.map((routine) => (
-          <MyRoutineCard
-            key={`${routine._id}-${Date.now()}`}
-            routine={routine}
-            check={handleRerender}
-          />
-        ))}
-      </div>
+      {loading ? (
+        <div className="fixed inset-0 flex justify-center items-center">
+          <span className="loading loading-dots loading-lg bg-secondary"></span>
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {routines.map((routine) => (
+            <MyRoutineCard
+              key={routine._id}
+              routine={routine}
+              check={handleRerender}
+            />
+          ))}
+        </div>
+      )}
     </main>
   );
 };
