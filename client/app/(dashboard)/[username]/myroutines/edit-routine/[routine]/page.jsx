@@ -65,7 +65,8 @@ const EditRoutinePage = () => {
             type="text"
             placeholder={`${name}`}
             className="input input-bordered bg-primary text-white input-primary w-full max-w-xs"
-          />
+            onChange={handleNameChange}
+          />{" "}
           <h1 className="text-4xl text-white font-semibold mb-4 mt-5">
             Description
           </h1>
@@ -75,6 +76,7 @@ const EditRoutinePage = () => {
             className="input input-bordered bg-primary text-white input-primary w-full h-40 max-w-xs"
           />
         </div>
+
         <div></div>
       </main>
     </>
