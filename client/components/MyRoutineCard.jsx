@@ -32,15 +32,9 @@ const RoutineCard = ({ routine, check }) => {
       console.log(error);
     }
   };
-  const handleRoutineView = () => {
-    router.push(`./myroutines/edit-routine/${routine._id}`);
-  };
 
   return (
-    <div
-      className="bg-primary p-6 rounded-xl shadow-lg hover:shadow-2xl border-4 border-primary hover:border-secondary transition-transform transform hover:scale-105 cursor-pointer relative"
-      onClick={handleRoutineView}
-    >
+    <div className="bg-primary p-6 rounded-xl shadow-lg hover:shadow-2xl border-4 border-primary hover:border-secondary transition-transform transform hover:scale-105 cursor-pointer relative">
       {/* Header Section */}
       <div className="flex justify-between items-center mb-5">
         <h1 className="text-2xl flex font-semibold text-white bg-secondary rounded-lg px-3 py-1 ">
