@@ -118,21 +118,17 @@ export const getCertainRoutine = async (req, res) => {
   }
 };
 
-export const updateRoutine = async (req, res) => {
+export const updateRoutineName = async (req, res) => {
   try {
     const { _id } = req.params;
-    const { name, description, days } = req.body;
-    await Routine.findByIdAndUpdate(
-      _id,
-      { name, description, days },
-      { new: true }
-    );
+    const { name, description } = req.body;
+    await Routine.findByIdAndUpdate(_id, { name, description }, { new: true });
   } catch (error) {
     console.log(error);
     res.status(400).json({ error: error.message });
   }
 };
-
+export const updateRoutineDays = async (req, res) => {};
 export const getCurrentRoutine = async (req, res) => {
   try {
     if (!req.session.user) {
