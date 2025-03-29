@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Edit2, Star } from "lucide-react"; // Importing necessary icons
 import Link from "next/link";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 const RoutineCard = ({ routine, check }) => {
   const { username } = useParams();
   const [loading, setLoading] = useState(false);
   const [isCurrent, setIsCurrent] = useState(routine.current);
-
+  const router = useRouter();
   // Function to handle the star button click
   const handleStarClick = async (e) => {
     e.stopPropagation();
@@ -34,10 +34,7 @@ const RoutineCard = ({ routine, check }) => {
   };
 
   return (
-    <div
-      className="bg-primary p-6 rounded-xl shadow-lg hover:shadow-2xl border-4 border-primary hover:border-secondary transition-transform transform hover:scale-105 cursor-pointer relative"
-      onClick={() => {}}
-    >
+    <div className="bg-primary p-6 rounded-xl shadow-lg hover:shadow-2xl border-4 border-primary hover:border-secondary transition-transform transform hover:scale-105 cursor-pointer relative">
       {/* Header Section */}
       <div className="flex justify-between items-center mb-5">
         <h1 className="text-2xl flex font-semibold text-white bg-secondary rounded-lg px-3 py-1 ">

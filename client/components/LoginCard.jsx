@@ -143,7 +143,7 @@ const LoginCard = () => {
                   <Loading />
                 </button>
               ) : toast ? (
-                <button className={`btn btn-${toastType} text-white `}>
+                <button className={`btn btn-success text-black `}>
                   {toast}
                 </button>
               ) : (
