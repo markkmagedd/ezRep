@@ -16,6 +16,6 @@ router.post("/add-routine", addRoutine);
 router.post("/set-current-routine", setCurrentRoutine);
 router.put("/:_id", updateRoutineName);
 router.put("/:_id/days", updateRoutineDays);
-router.get("/get-current-routine", getCurrentRoutine);
+router.get  ("/get-current-routine", getCurrentRoutine);
 
 export default router;

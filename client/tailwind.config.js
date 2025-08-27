@@ -10,23 +10,23 @@ module.exports = {
     themes: [
       {
         mytheme: {
-          primary: "#444444",
+          primary: "#27272a", // zinc-800
 
-          secondary: "#DA0037",
+          secondary: "#2563eb", // blue-600
 
-          accent: "#00e7e5",
+          accent: "#1e40af", // blue-800
 
-          neutral: "#3c232a",
+          neutral: "#18181b", // zinc-900
 
-          "base-100": "#171717",
+          "base-100": "#18181b", // zinc-900
 
-          info: "#0096ff",
+          info: "#3b82f6", // blue-500
 
-          success: "#00e67c",
+          success: "#22c55e", // green-500
 
-          warning: "#f87b00",
+          warning: "#f59e0b", // amber-500
 
-          error: "#ff6b88",
+          error: "#ef4444", // red-500
         },
       },
     ],

@@ -3,6 +3,7 @@ import React from "react";
 import { useState } from "react";
 import Loading from "./Loading";
 import { useRouter } from "next/navigation";
+import { supabase } from "../supabase-client.js";
 
 const LoginCard = () => {
   const [username, setUsername] = useState("");
@@ -35,6 +36,7 @@ const LoginCard = () => {
       return;
     }
     try {
+      const {} = await supabase.from("users").select().
       const res = await fetch("http://localhost:8080/auth/login", {
         method: "POST",
         headers: {

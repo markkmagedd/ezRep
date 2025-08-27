@@ -4,43 +4,59 @@ import ProgressCard from "@/components/ProgressCard";
 import GoalsCard from "@/components/GoalsCard";
 import RoutineCard from "@/components/RoutineCard";
 import Link from "next/link";
+import { Dumbbell } from "lucide-react";
+
 export default function Home() {
   return (
     <>
       <Navbar />
-      <main className="flex flex-col min-h-screen">
-        <div className="flex flex-col justify-center items-center mt-20 gap-24">
-          <div className="scale-75 md:scale-90 lg:scale-100">
-            <h1 className="text-6xl font-extrabold text-white mb-5 whitespace-nowrap ">
-              Make Every{" "}
-              <a className="bg-secondary text-transparent bg-clip-text text-7xl ">
-                Rep
-              </a>{" "}
-              Matter
-            </h1>
-            <div className="text-center max-w-xl">
-              <p className="text-lg text-white mb-7 ">
+      <main className="min-h-screen bg-zinc-900">
+        {/* Hero Section */}
+        <div className="relative bg-gradient-to-r from-zinc-900 via-black to-zinc-900 py-20 md:py-32 border-b border-zinc-800">
+          <div className="max-w-screen-xl mx-auto px-4 sm:px-6 flex flex-col items-center">
+            <div className="text-center mb-16">
+              <div className="flex items-center justify-center mb-6">
+                <Dumbbell className="w-12 h-12 text-blue-500 mr-3" />
+                <h1 className="text-5xl md:text-6xl font-bold text-white">
+                  ez<span className="text-blue-500">Rep</span>
+                </h1>
+              </div>
+
+              <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+                Make Every <span className="text-blue-500">Rep</span> Matter
+              </h2>
+
+              <p className="text-lg text-gray-300 max-w-2xl mx-auto mb-8">
                 Unlock your potential with a dedicated platform to track and
                 enhance your workout journey. Every rep counts towards your
-                goals.
+                fitness goals.
               </p>
+
               <Link
                 href="/auth/login"
-                className="btn btn-secondary text-xl text-white h-10 w-32 hover:scale-105 border-transparent shadow-2xl"
+                className="bg-blue-600 hover:bg-blue-500 text-white font-medium px-8 py-3 rounded-md inline-flex items-center text-lg transition-colors"
               >
-                Hop on
+                Start Training
               </Link>
             </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 justify-center ">
-            <ProgressCard />
-            <CheckInCard />
-            <GoalsCard />
-            <RoutineCard />
-          </div>
         </div>
 
-        {/* Grid layout for cards with reduced gap */}
+        {/* Features Section */}
+        <div className="py-16 px-4">
+          <div className="max-w-screen-xl mx-auto">
+            <h2 className="text-2xl font-bold text-white mb-12 text-center">
+              Power Up Your Fitness Journey
+            </h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <ProgressCard />
+              <CheckInCard />
+              <GoalsCard />
+              <RoutineCard />
+            </div>
+          </div>
+        </div>
       </main>
     </>
   );
